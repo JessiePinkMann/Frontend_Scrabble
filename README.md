@@ -20,9 +20,9 @@ Making da front for scrabble game!!
 ### Authorization 
 
 * App allows you to register an account (0.4 points)
-* App allows you to delete account (0.1 points)
+* App allows you to delete account (0.1 points) (TODO: add to API)
 * App allows you to authorize with an existing account (0.4 points)
-* App allows you to log out of the account (0.1 points)
+* App allows you to log out of the account (0.1 points) (TODO: add to API)
 
 ### Rooms
 * App allows to create a gaming room, which grants admin rights for this room to the creator (0.3 points)
