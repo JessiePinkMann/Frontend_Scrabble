@@ -11,6 +11,8 @@
 		4FEC46EA2C14DB77005D866D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEC46E92C14DB77005D866D /* ContentView.swift */; };
 		4FEC46EC2C14DB79005D866D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FEC46EB2C14DB79005D866D /* Assets.xcassets */; };
 		4FEC46EF2C14DB79005D866D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FEC46EE2C14DB79005D866D /* Preview Assets.xcassets */; };
+		994F953F2C1E3F8400497BAA /* AuthorizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994F953E2C1E3F8400497BAA /* AuthorizationView.swift */; };
+		994F95412C1E419900497BAA /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994F95402C1E419900497BAA /* AuthService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -19,6 +21,8 @@
 		4FEC46E92C14DB77005D866D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4FEC46EB2C14DB79005D866D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4FEC46EE2C14DB79005D866D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		994F953E2C1E3F8400497BAA /* AuthorizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationView.swift; sourceTree = "<group>"; };
+		994F95402C1E419900497BAA /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -51,6 +55,7 @@
 		4FEC46E62C14DB77005D866D /* Frontend_Scrabble */ = {
 			isa = PBXGroup;
 			children = (
+				994F953D2C1E3F4600497BAA /* AuthorizationView */,
 				4FEC46E72C14DB77005D866D /* Frontend_ScrabbleApp.swift */,
 				4FEC46E92C14DB77005D866D /* ContentView.swift */,
 				4FEC46EB2C14DB79005D866D /* Assets.xcassets */,
@@ -65,6 +70,15 @@
 				4FEC46EE2C14DB79005D866D /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		994F953D2C1E3F4600497BAA /* AuthorizationView */ = {
+			isa = PBXGroup;
+			children = (
+				994F953E2C1E3F8400497BAA /* AuthorizationView.swift */,
+				994F95402C1E419900497BAA /* AuthService.swift */,
+			);
+			path = AuthorizationView;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -139,6 +153,8 @@
 			files = (
 				4FEC46EA2C14DB77005D866D /* ContentView.swift in Sources */,
 				4FEC46E82C14DB77005D866D /* Frontend_ScrabbleApp.swift in Sources */,
+				994F953F2C1E3F8400497BAA /* AuthorizationView.swift in Sources */,
+				994F95412C1E419900497BAA /* AuthService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
