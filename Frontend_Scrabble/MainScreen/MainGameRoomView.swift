@@ -10,6 +10,7 @@ import SwiftUI
 struct MainGameRoomView: View {
     @StateObject private var viewModel = GameRoomViewModel()
     @State private var showCreateRoomView = false
+    var onLogout: () -> Void
     
     var body: some View {
         NavigationView {
@@ -36,6 +37,19 @@ struct MainGameRoomView: View {
                 .sheet(isPresented: $showCreateRoomView) {
                     CreateRoomView(viewModel: viewModel)
                 }
+                
+                Button(action: {
+                    onLogout()
+                }) {
+                    Text("Logout")
+                        .font(.headline)
+                        .foregroundColor(.white)
+                        .padding()
+                        .frame(maxWidth: .infinity)
+                        .background(Color.red)
+                        .cornerRadius(10)
+                        .padding()
+                }
             }
             .padding()
             .navigationBarTitle("Game Rooms", displayMode: .inline)
@@ -44,5 +58,5 @@ struct MainGameRoomView: View {
 }
 
 #Preview {
-    MainGameRoomView()
+    MainGameRoomView(onLogout: {})
 }

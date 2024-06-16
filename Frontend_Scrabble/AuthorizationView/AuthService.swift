@@ -5,6 +5,7 @@ class AuthService {
     static let shared = AuthService()
     private let baseURL = AppConfig.apiUrl + "auth"
     private let userDefaultsTokenKey = "authToken"
+    private let userDefaultsNicknameKey = "nickname"
 
     func register(nickname: String, password: String, completion: @escaping (Result<Void, Error>) -> Void) {
         let url = URL(string: "\(baseURL)/register")!
@@ -64,7 +65,8 @@ class AuthService {
                         completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "No data received"])))
                         return
                     }
-                    self.saveToken(token)
+                    self.saveToken("Bearer " + token)
+                    self.saveNickname(nickname)
                     completion(.success(()))
                 } else {
                     if let data = data {
@@ -97,5 +99,13 @@ class AuthService {
     
     func getToken() -> String? {
         return UserDefaults.standard.string(forKey: userDefaultsTokenKey)
+    }
+    
+    private func saveNickname(_ nickname: String) {
+        UserDefaults.standard.set(nickname, forKey: userDefaultsNicknameKey)
+    }
+    
+    func getNickname() -> String? {
+        return UserDefaults.standard.string(forKey: userDefaultsNicknameKey)
     }
 }
