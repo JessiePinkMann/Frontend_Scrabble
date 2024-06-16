@@ -36,6 +36,14 @@ struct MainGameRoomView: View {
                 .sheet(isPresented: $showCreateRoomView) {
                     CreateRoomView(viewModel: viewModel)
                 }
+                .background(
+                    NavigationLink(
+                        destination: GameScreenView(viewModel: viewModel),
+                        isActive: $viewModel.navigateToGameScreen
+                    ) {
+                        EmptyView()
+                    }
+                )
             }
             .padding()
             .navigationBarTitle("Game Rooms", displayMode: .inline)

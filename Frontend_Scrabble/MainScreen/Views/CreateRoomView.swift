@@ -50,7 +50,12 @@ struct CreateRoomView: View {
         }
         
         viewModel.createGameRoom(roomCode: roomCode, currentNumberOfChips: chips) {
-            presentationMode.wrappedValue.dismiss()
+            if let newRoomId = viewModel.newRoomId {
+                viewModel.addGamerToRoom(roomId: newRoomId, gamerId: UUID()) {  // Вставьте сюда правильный gamerId
+                    presentationMode.wrappedValue.dismiss()
+                    viewModel.navigateToGameScreen = true
+                }
+            }
         }
     }
 }

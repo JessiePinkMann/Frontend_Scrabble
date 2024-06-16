@@ -15,6 +15,9 @@
 		4FC01E132C1E424700728F39 /* MainGameRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC01E122C1E424700728F39 /* MainGameRoomView.swift */; };
 		4FC01E152C1EFD7B00728F39 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC01E142C1EFD7B00728F39 /* User.swift */; };
 		4FC01E172C1F11DD00728F39 /* CreateRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC01E162C1F11DD00728F39 /* CreateRoomView.swift */; };
+		4FC01E1C2C1F281900728F39 /* GameScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC01E1B2C1F281900728F39 /* GameScreenView.swift */; };
+		4FC01E1E2C1F2A9600728F39 /* GamerIntoRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC01E1D2C1F2A9600728F39 /* GamerIntoRoom.swift */; };
+		4FC01E212C1F2B4500728F39 /* Chip.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC01E202C1F2B4500728F39 /* Chip.swift */; };
 		4FEC46E82C14DB77005D866D /* Frontend_ScrabbleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEC46E72C14DB77005D866D /* Frontend_ScrabbleApp.swift */; };
 		4FEC46EA2C14DB77005D866D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEC46E92C14DB77005D866D /* ContentView.swift */; };
 		4FEC46EC2C14DB79005D866D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FEC46EB2C14DB79005D866D /* Assets.xcassets */; };
@@ -34,6 +37,9 @@
 		4FC01E122C1E424700728F39 /* MainGameRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGameRoomView.swift; sourceTree = "<group>"; };
 		4FC01E142C1EFD7B00728F39 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		4FC01E162C1F11DD00728F39 /* CreateRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoomView.swift; sourceTree = "<group>"; };
+		4FC01E1B2C1F281900728F39 /* GameScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScreenView.swift; sourceTree = "<group>"; };
+		4FC01E1D2C1F2A9600728F39 /* GamerIntoRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamerIntoRoom.swift; sourceTree = "<group>"; };
+		4FC01E202C1F2B4500728F39 /* Chip.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Chip.swift; sourceTree = "<group>"; };
 		4FEC46E42C14DB77005D866D /* Frontend_Scrabble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Frontend_Scrabble.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FEC46E72C14DB77005D866D /* Frontend_ScrabbleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frontend_ScrabbleApp.swift; sourceTree = "<group>"; };
 		4FEC46E92C14DB77005D866D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -95,6 +101,24 @@
 			path = ViewModels;
 			sourceTree = "<group>";
 		};
+		4FC01E182C1F1E9900728F39 /* GameScreen */ = {
+			isa = PBXGroup;
+			children = (
+				4FC01E1F2C1F2B2F00728F39 /* Models */,
+				4FC01E1B2C1F281900728F39 /* GameScreenView.swift */,
+			);
+			path = GameScreen;
+			sourceTree = "<group>";
+		};
+		4FC01E1F2C1F2B2F00728F39 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4FC01E1D2C1F2A9600728F39 /* GamerIntoRoom.swift */,
+				4FC01E202C1F2B4500728F39 /* Chip.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
 		4FEC46DB2C14DB77005D866D = {
 			isa = PBXGroup;
 			children = (
@@ -114,6 +138,7 @@
 		4FEC46E62C14DB77005D866D /* Frontend_Scrabble */ = {
 			isa = PBXGroup;
 			children = (
+				4FC01E182C1F1E9900728F39 /* GameScreen */,
 				4FC01E042C1E3F1B00728F39 /* MainScreen */,
 				994F95422C1EFFF200497BAA /* Responses */,
 				994F953D2C1E3F4600497BAA /* AuthorizationView */,
@@ -222,6 +247,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4FC01E132C1E424700728F39 /* MainGameRoomView.swift in Sources */,
+				4FC01E1E2C1F2A9600728F39 /* GamerIntoRoom.swift in Sources */,
 				994F95442C1EFFFE00497BAA /* ErrorResponse.swift in Sources */,
 				4FEC46EA2C14DB77005D866D /* ContentView.swift in Sources */,
 				4FC01E112C1E423500728F39 /* CreateRoomButtonView.swift in Sources */,
@@ -235,6 +261,8 @@
 				994F95482C1F106500497BAA /* AppConfig.swift in Sources */,
 				994F953F2C1E3F8400497BAA /* AuthorizationView.swift in Sources */,
 				994F95412C1E419900497BAA /* AuthService.swift in Sources */,
+				4FC01E212C1F2B4500728F39 /* Chip.swift in Sources */,
+				4FC01E1C2C1F281900728F39 /* GameScreenView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
