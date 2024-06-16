@@ -1,17 +1,9 @@
-//
-//  CreateRoomView.swift
-//  Frontend_Scrabble
-//
-//  Created by Egor Anoshin on 16.06.2024.
-//
-
 import SwiftUI
 
 struct CreateRoomView: View {
     @ObservedObject var viewModel: GameRoomViewModel
     @State private var roomCode: String = ""
     @State private var currentNumberOfChips: String = ""
-    @Environment(\.presentationMode) var presentationMode
     
     var body: some View {
         VStack {
@@ -25,6 +17,10 @@ struct CreateRoomView: View {
                 .keyboardType(.numberPad)
             
             Spacer()
+            
+            NavigationLink(destination: GameScreenView(viewModel: GameScreenViewModel(roomId: viewModel.newRoomId ?? UUID())), isActive: $viewModel.navigateToGameScreen) {
+                EmptyView()
+            }
             
             Button(action: {
                 createRoom()
@@ -40,23 +36,22 @@ struct CreateRoomView: View {
             }
         }
         .padding()
-        .navigationBarTitle("Create Game Room", displayMode: .inline)
+        .navigationTitle("Create Game Room")
     }
     
     private func createRoom() {
         guard !roomCode.isEmpty, let chips = Int(currentNumberOfChips) else {
-            // Handle validation error
+            print("Validation failed: Room code or chips are invalid.")
             return
         }
         
+        print("Attempting to create room with code: \(roomCode) and chips: \(chips)")
+        
         viewModel.createGameRoom(roomCode: roomCode, currentNumberOfChips: chips) {
-            if let newRoomId = viewModel.newRoomId {
-                viewModel.addGamerToRoom(roomId: newRoomId, gamerId: UUID()) {  // Вставьте сюда правильный gamerId
-                    presentationMode.wrappedValue.dismiss()
-                    viewModel.navigateToGameScreen = true
-                }
+            if viewModel.newRoomId != nil {
+                print("Room created with ID: \(viewModel.newRoomId!.uuidString)")
+                viewModel.navigateToGameScreen = true
             }
         }
     }
 }
-

@@ -1,16 +1,18 @@
 import SwiftUI
 
-struct MainGameRoomView: View {
-    @StateObject private var viewModel = GameRoomViewModel()
-    var onLogout: () -> Void
+struct MainView: View {
+    @StateObject var viewModel = GameRoomViewModel()
     
     var body: some View {
         NavigationStack {
             VStack {
-                ActiveRoomsNowView(viewModel: viewModel)
+                Text("Active rooms now: \(viewModel.gameRooms.count)")
+                    .font(.title)
+                    .padding()
                 
-                ActiveRoomsListView(gameRooms: viewModel.gameRooms)
-                    .frame(maxWidth: .infinity)
+                List(viewModel.gameRooms) { room in
+                    Text(room.roomCode ?? "Unknown Room")
+                }
                 
                 Spacer()
                 
@@ -21,19 +23,6 @@ struct MainGameRoomView: View {
                         .padding()
                         .frame(maxWidth: .infinity)
                         .background(Color.black)
-                        .cornerRadius(10)
-                        .padding()
-                }
-                
-                Button(action: {
-                    onLogout()
-                }) {
-                    Text("Logout")
-                        .font(.headline)
-                        .foregroundColor(.white)
-                        .padding()
-                        .frame(maxWidth: .infinity)
-                        .background(Color.red)
                         .cornerRadius(10)
                         .padding()
                 }
@@ -52,8 +41,8 @@ struct MainGameRoomView: View {
     }
 }
 
-struct MainGameRoomView_Previews: PreviewProvider {
+struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainGameRoomView(onLogout: {})
+        MainView()
     }
 }
