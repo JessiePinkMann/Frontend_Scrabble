@@ -2,6 +2,11 @@ import SwiftUI
 
 struct MainGameRoomView: View {
     @StateObject private var viewModel = GameRoomViewModel()
+    @State private var showCodeInputView = false
+    @State private var selectedRoom: GameRoom?
+    @State private var enteredCode = ""
+    @State private var showError = false
+    @State private var errorMessage = ""
     var onLogout: () -> Void
     
     var body: some View {
@@ -12,13 +17,13 @@ struct MainGameRoomView: View {
                 ScrollView {
                     VStack(spacing: 10) {
                         ForEach(viewModel.gameRooms) { room in
-                            NavigationLink(destination: GameScreenView(viewModel: GameScreenViewModel(roomId: room.id!))) {
+                            Button(action: {
+                                selectedRoom = room
+                                DispatchQueue.main.asyncAfter(deadline: .now() + 0.1) {
+                                    showCodeInputView = true
+                                }
+                            }) {
                                 RoomRowView(room: room)
-                                    .onTapGesture {
-                                        viewModel.addGamerToRoom(roomId: room.id, roomCode: room.roomCode ?? "") {
-                                            viewModel.navigateToGameScreen = true
-                                        }
-                                    }
                             }
                             .buttonStyle(PlainButtonStyle())
                         }
@@ -59,15 +64,31 @@ struct MainGameRoomView: View {
                     GameScreenView(viewModel: GameScreenViewModel(roomId: roomId))
                 }
             }
+            .sheet(isPresented: $showCodeInputView) {
+                if let room = selectedRoom {
+                    CodeInputView(
+                        room: room,
+                        enteredCode: $enteredCode,
+                        showError: $showError,
+                        errorMessage: $errorMessage,
+                        onSuccess: {
+                            viewModel.addGamerToRoom(roomId: room.id, roomCode: enteredCode) {
+                                viewModel.navigateToGameScreen = true
+                            }
+                            showCodeInputView = false
+                        },
+                        onCancel: {
+                            showCodeInputView = false
+                        }
+                    )
+                }
+            }
         }
         .onAppear {
             viewModel.fetchGameRooms()
         }
-    }
-}
-
-struct MainGameRoomView_Previews: PreviewProvider {
-    static var previews: some View {
-        MainGameRoomView(onLogout: {})
+        .alert(isPresented: $showError) {
+            Alert(title: Text("Error"), message: Text(errorMessage), dismissButton: .default(Text("OK")))
+        }
     }
 }
