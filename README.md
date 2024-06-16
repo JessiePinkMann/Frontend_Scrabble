@@ -57,20 +57,20 @@ Making da front for scrabble game!!
 
 ## Фиксы в реализации сервера
 
-1. Комнату можно удалить только если в ней есть игроки, иначе выдает ошибку "Комнаты не существует" (вводит в заблуждение)
+1. Комнату можно удалить только если в ней есть игроки, иначе выдает ошибку "Комнаты не существует" (вводит в заблуждение) - закомментили эту проверку
 ```swift
 func deleteRoom(_ req: Request) async throws -> HTTPStatus {
     if let roomIdString = req.parameters.get("roomId"), let roomId = UUID(roomIdString) {
         let rooms = try await GamerIntoRoom.query(on: req.db)
             .filter(\.$roomId == roomId).all()
-        if !rooms.isEmpty {
+        // if !rooms.isEmpty {
             let room = try await GameRoom.query(on: req.db)
                 .filter(\.$id == roomId).first()
             try await rooms.delete(on: req.db)
             try await room?.delete(on: req.db)
-        } else {
-            throw Abort(.custom(code: 404, reasonPhrase: "Данной комнаты не существует"))
-        }
+        // } else {
+        //     throw Abort(.custom(code: 404, reasonPhrase: "Данной комнаты не существует"))
+        // }
         return .noContent
     } else {
         throw Abort(.notFound)
@@ -78,7 +78,28 @@ func deleteRoom(_ req: Request) async throws -> HTTPStatus {
 }
 ```
 
-2. ID игрока выплевывается только на регистрации. Потом никак невозможно его получить - а нужен он много где. Хотелось бы хотя бы на логине получать его помимо JWT токена. Либо можно добавить в API возможность получения айди по нику.
+2. ID игрока выплевывается только на регистрации. Потом никак невозможно его получить - а нужен он много где. Хотелось бы хотя бы на логине получать его помимо JWT токена. Либо можно добавить в API возможность получения айди по нику. Фикс - добавили LoginResponse и поменяли login handler:
+```swift
+struct UserLoginResponse: Content {
+    let id: String
+    let JWT: String
+    
+    init(id: String, JWT: String) {
+        self.id = id
+        self.JWT = JWT
+    }
+}
+
+func login(_ req: Request) async throws -> UserLoginResponse {
+    // Предположим, что у нас есть функция для проверки учетных данных пользователя
+    let credentials = try req.content.decode(UserCredentials.self)
+    let user = try await authenticate(credentials: credentials, on: req)
+    
+    let token = try TokensHelper.createAccessToken(from: user, signers: req.application.jwt.signers)
+    
+    return UserLoginResponse(id: user.id?.uuidString ?? "", JWT: token)
+}
+```
 
 ## Crew
 - Mr. 3ybactuk <3
