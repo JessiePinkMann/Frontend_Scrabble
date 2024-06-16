@@ -12,12 +12,15 @@ class GameRoomViewModel: ObservableObject {
     @Published var gameRooms: [GameRoom] = []
     private var cancellables = Set<AnyCancellable>()
     
-    private let baseURL = "http://127.0.0.1:8080/gameRooms"
-    private let apiKey = "6ef0b419-5387-4129-b693-82b1dc779b53"
-    private let jwtToken = "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJIUzI1NiJ9.eyJ1c2VySUQiOiIwNjkxRjNFOC0zNzcwLTRGOTYtOTMwNS1BMjA1OEJERjhEMjEiLCJleHAiOjE3MTg1NDQ4MzguNjg4ODIzfQ.hiBy8N-aa-QXkg5uNCDyvzN-pR1tMO6CkD1ywe1U2Cs"
-    private let adminNickname = "yaroslav22"
+    private let baseURL = AppConfig.apiUrl + "gameRooms"
+    private let apiKey = AppConfig.apiKey
+    private var jwtToken: String
+    private var adminNickname: String
     
     init() {
+        self.jwtToken = AuthService.shared.getToken() ?? ""
+        self.adminNickname = AuthService.shared.getNickname() ?? ""
+        print(self.jwtToken, self.adminNickname)
         fetchGameRooms()
     }
     
