@@ -51,7 +51,6 @@ struct MainGameRoomView: View {
                         .cornerRadius(10)
                         .padding()
                 }
-
             }
             .padding()
             .navigationBarTitle("Game Rooms", displayMode: .inline)
