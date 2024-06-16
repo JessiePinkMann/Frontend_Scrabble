@@ -26,12 +26,12 @@ Making da front for scrabble game!!
 
 ### Rooms (3.3 points)
 * **[DONE]** App allows to create a gaming room, which grants admin rights for this room to the creator (0.3 points)
-* App allows admin to delete room (0.3 points)
-* Other players can join the gaming room (0.3 points)
+* **[DONE]** App allows admin to delete room (0.3 points)
+* **[DONE]** Other players can join the gaming room (0.3 points)
 * **[DONE]** Other players can leave the gaming room (0.2 points)
 * **[DONE]** **Players can join private rooms using invite code (1.5 points)**
-* Players can be removed by the room admin (0.4 points)
-* Admin status can be transferred to another player (0.3 points)
+* **[DONE]** Players can be removed by the room admin (0.4 points)
+* **[Button and handler made - no API option for this]** Admin status can be transferred to another player (0.3 points)
 
 ### Game (4.4 points)
 
@@ -48,11 +48,11 @@ Making da front for scrabble game!!
 * Dependency injection with unit/integration tests (two or more) (1.0 points)
 * Good code style (0.5 points)
 * **Game can be played again with the same players (1.5 points)**
-* **Empty rooms are deleted (0.5 points)**
+* **[YES]** Empty rooms are deleted (0.5 points)
 * Letter tiles left counter is present (0.3 points)
 * Exchange letters in hand with the bag (skips their turn) (0.3 points)
 * **Bonus: Players can get hints for words to place (1.5 points)**
-* **[Probably yes]** Bonus: Any improvement you do to server to make tasks for this group work possible grant you 0.5 points up to 2 points
+* **[YES]** Bonus: Any improvement you do to server to make tasks for this group work possible grant you 0.5 points up to 2 points
 
 
 ## Фиксы в реализации сервера
