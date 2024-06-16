@@ -10,6 +10,17 @@ struct GameScreenView: View {
                 .font(.largeTitle)
                 .padding()
             
+            if viewModel.isLoading {
+                ProgressView("Loading players...")
+                    .progressViewStyle(CircularProgressViewStyle())
+                    .padding()
+            } else {
+                List(viewModel.players) { player in
+                    Text(player.nickName)
+                }
+                .frame(maxHeight: 300)
+            }
+            
             Spacer()
             
             Button(action: {
