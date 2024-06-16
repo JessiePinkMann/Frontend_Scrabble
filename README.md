@@ -25,11 +25,11 @@ Making da front for scrabble game!!
 * **DONE** App allows you to log out of the account (0.1 points)
 
 ### Rooms (3.3 points)
-* App allows to create a gaming room, which grants admin rights for this room to the creator (0.3 points)
+* **DONE** App allows to create a gaming room, which grants admin rights for this room to the creator (0.3 points)
 * App allows admin to delete room (0.3 points)
 * Other players can join the gaming room (0.3 points)
-* Other players can leave the gaming room (0.2 points)
-* **Players can join private rooms using invite code (1.5 points)**
+* **DONE** Other players can leave the gaming room (0.2 points)
+* **DONE** **Players can join private rooms using invite code (1.5 points)**
 * Players can be removed by the room admin (0.4 points)
 * Admin status can be transferred to another player (0.3 points)
 
@@ -38,13 +38,13 @@ Making da front for scrabble game!!
 * Admin can start a game (from room) (0.2 points)
 * Admin can pause and then continue the game (0.2 points)
 * **Players can put words in clockwise order (1.0 points)**
-* Words placed are validated (0.5 points)
+* **DONE** Words placed are validated (0.5 points)
 * **There is scoreboard that is shown to every player that indicates who is closer to victory (1.5 points)**
 * **After game finishes the winner is shown to everyone (1.0 points)**
 
 ### Other
 
-* The code is written in MVVM or Clean Swift or TCA 1.2 points
+* **Probably yes** The code is written in MVVM or Clean Swift or TCA 1.2 points
 * Dependency injection with unit/integration tests (two or more) (1.0 points)
 * Good code style (0.5 points)
 * **Game can be played again with the same players (1.5 points)**
@@ -52,7 +52,7 @@ Making da front for scrabble game!!
 * Letter tiles left counter is present (0.3 points)
 * Exchange letters in hand with the bag (skips their turn) (0.3 points)
 * **Bonus: Players can get hints for words to place (1.5 points)**
-* Bonus: Any improvement you do to server to make tasks for this group work possible grant you 0.5 points up to 2 points
+* **Probably yes** Bonus: Any improvement you do to server to make tasks for this group work possible grant you 0.5 points up to 2 points
 
 
 ## Фиксы в реализации сервера
@@ -98,6 +98,48 @@ func login(_ req: Request) async throws -> UserLoginResponse {
     let token = try TokensHelper.createAccessToken(from: user, signers: req.application.jwt.signers)
     
     return UserLoginResponse(id: user.id?.uuidString ?? "", JWT: token)
+}
+```
+
+3. Добавлены getAllUsers, getUserByNickname и getUserById чтобы облегчить жизнь (например чтобы можно было людям в комнате их ники выводить, админа комнаты определять)
+```swift
+func getUserById(_ req: Request) async throws -> User {
+    if let userIdString = req.parameters.get("id"), let userId = UUID(userIdString) {
+        if let user = try await User.query(on: req.db)
+            .filter(\.$id == userId)
+            .first() {
+            let newUser = User(id: user.id, nickName: user.nickName, password: "")
+            return newUser
+        }
+        else {
+            throw Abort(.notFound)
+        }
+    }
+    throw Abort(.badRequest, reason: "Couldn't process request")
+}
+
+func getUserByNickname(_ req: Request) async throws -> User {
+    if let userName = req.parameters.get("nickname") {
+        if let user = try await User.query(on: req.db)
+            .filter(\.$nickName == userName)
+            .first() {
+            let newUser = User(id: user.id, nickName: user.nickName, password: "")
+            return newUser
+        }
+        else {
+            throw Abort(.notFound)
+        }
+    }
+    throw Abort(.badRequest, reason: "Couldn't process request")
+}
+
+func getAllUsers(_ req: Request) async throws -> [User] {
+    let users = try await User.query(on: req.db).all()
+    
+    return users.map {user in
+        let newUser = User(id: user.id, nickName: user.nickName, password: "")
+        return newUser
+    }
 }
 ```
 

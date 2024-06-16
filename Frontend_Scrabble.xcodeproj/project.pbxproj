@@ -30,6 +30,9 @@
 		994F95442C1EFFFE00497BAA /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994F95432C1EFFFE00497BAA /* ErrorResponse.swift */; };
 		994F95482C1F106500497BAA /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994F95472C1F106500497BAA /* AppConfig.swift */; };
 		994F954A2C1F3ACF00497BAA /* LoginResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994F95492C1F3ACF00497BAA /* LoginResponse.swift */; };
+		994F954D2C1F6FE900497BAA /* GameFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994F954C2C1F6FE900497BAA /* GameFieldView.swift */; };
+		994F954F2C1F704500497BAA /* WordProccessor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994F954E2C1F704500497BAA /* WordProccessor.swift */; };
+		994F95512C1F79B500497BAA /* WordService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994F95502C1F79B500497BAA /* WordService.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -57,6 +60,9 @@
 		994F95432C1EFFFE00497BAA /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
 		994F95472C1F106500497BAA /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 		994F95492C1F3ACF00497BAA /* LoginResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginResponse.swift; sourceTree = "<group>"; };
+		994F954C2C1F6FE900497BAA /* GameFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameFieldView.swift; sourceTree = "<group>"; };
+		994F954E2C1F704500497BAA /* WordProccessor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordProccessor.swift; sourceTree = "<group>"; };
+		994F95502C1F79B500497BAA /* WordService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WordService.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -148,6 +154,7 @@
 		4FEC46E62C14DB77005D866D /* Frontend_Scrabble */ = {
 			isa = PBXGroup;
 			children = (
+				994F954B2C1F6FD300497BAA /* GameFieldScreen */,
 				4FC01E182C1F1E9900728F39 /* GameScreen */,
 				4FC01E042C1E3F1B00728F39 /* MainScreen */,
 				994F95422C1EFFF200497BAA /* Responses */,
@@ -186,6 +193,16 @@
 				994F95492C1F3ACF00497BAA /* LoginResponse.swift */,
 			);
 			path = Responses;
+			sourceTree = "<group>";
+		};
+		994F954B2C1F6FD300497BAA /* GameFieldScreen */ = {
+			isa = PBXGroup;
+			children = (
+				994F954C2C1F6FE900497BAA /* GameFieldView.swift */,
+				994F954E2C1F704500497BAA /* WordProccessor.swift */,
+				994F95502C1F79B500497BAA /* WordService.swift */,
+			);
+			path = GameFieldScreen;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -270,6 +287,8 @@
 				4FC01E092C1E41F200728F39 /* GameRoom.swift in Sources */,
 				4FEC46E82C14DB77005D866D /* Frontend_ScrabbleApp.swift in Sources */,
 				4FC01E152C1EFD7B00728F39 /* User.swift in Sources */,
+				994F954F2C1F704500497BAA /* WordProccessor.swift in Sources */,
+				994F954D2C1F6FE900497BAA /* GameFieldView.swift in Sources */,
 				4FC01E0D2C1E422100728F39 /* ActiveRoomsNowView.swift in Sources */,
 				4FC01E172C1F11DD00728F39 /* CreateRoomView.swift in Sources */,
 				4FC01E272C1F6E5E00728F39 /* MainView.swift in Sources */,
@@ -277,8 +296,10 @@
 				4FC01E252C1F5E6D00728F39 /* GameScreenView.swift in Sources */,
 				994F953F2C1E3F8400497BAA /* AuthorizationView.swift in Sources */,
 				994F95412C1E419900497BAA /* AuthService.swift in Sources */,
+				994F95512C1F79B500497BAA /* WordService.swift in Sources */,
 				994F954A2C1F3ACF00497BAA /* LoginResponse.swift in Sources */,
 				4FC01E212C1F2B4500728F39 /* Chip.swift in Sources */,
+				4FC01E1C2C1F281900728F39 /* GameScreenView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
