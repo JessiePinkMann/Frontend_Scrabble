@@ -101,6 +101,48 @@ func login(_ req: Request) async throws -> UserLoginResponse {
 }
 ```
 
+3. Добавлены getAllUsers, getUserByNickname и getUserById чтобы облегчить жизнь (например чтобы можно было людям в комнате их ники выводить, админа комнаты определять)
+```swift
+func getUserById(_ req: Request) async throws -> User {
+    if let userIdString = req.parameters.get("id"), let userId = UUID(userIdString) {
+        if let user = try await User.query(on: req.db)
+            .filter(\.$id == userId)
+            .first() {
+            let newUser = User(id: user.id, nickName: user.nickName, password: "")
+            return newUser
+        }
+        else {
+            throw Abort(.notFound)
+        }
+    }
+    throw Abort(.badRequest, reason: "Couldn't process request")
+}
+
+func getUserByNickname(_ req: Request) async throws -> User {
+    if let userName = req.parameters.get("nickname") {
+        if let user = try await User.query(on: req.db)
+            .filter(\.$nickName == userName)
+            .first() {
+            let newUser = User(id: user.id, nickName: user.nickName, password: "")
+            return newUser
+        }
+        else {
+            throw Abort(.notFound)
+        }
+    }
+    throw Abort(.badRequest, reason: "Couldn't process request")
+}
+
+func getAllUsers(_ req: Request) async throws -> [User] {
+    let users = try await User.query(on: req.db).all()
+    
+    return users.map {user in
+        let newUser = User(id: user.id, nickName: user.nickName, password: "")
+        return newUser
+    }
+}
+```
+
 ## Crew
 - Mr. 3ybactuk <3
 - Sir Jessie
