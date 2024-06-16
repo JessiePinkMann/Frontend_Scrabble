@@ -14,6 +14,7 @@
 		994F953F2C1E3F8400497BAA /* AuthorizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994F953E2C1E3F8400497BAA /* AuthorizationView.swift */; };
 		994F95412C1E419900497BAA /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994F95402C1E419900497BAA /* AuthService.swift */; };
 		994F95442C1EFFFE00497BAA /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994F95432C1EFFFE00497BAA /* ErrorResponse.swift */; };
+		994F95482C1F106500497BAA /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994F95472C1F106500497BAA /* AppConfig.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -25,6 +26,7 @@
 		994F953E2C1E3F8400497BAA /* AuthorizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationView.swift; sourceTree = "<group>"; };
 		994F95402C1E419900497BAA /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
 		994F95432C1EFFFE00497BAA /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
+		994F95472C1F106500497BAA /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				4FEC46E92C14DB77005D866D /* ContentView.swift */,
 				4FEC46EB2C14DB79005D866D /* Assets.xcassets */,
 				4FEC46ED2C14DB79005D866D /* Preview Content */,
+				994F95472C1F106500497BAA /* AppConfig.swift */,
 			);
 			path = Frontend_Scrabble;
 			sourceTree = "<group>";
@@ -165,6 +168,7 @@
 				994F95442C1EFFFE00497BAA /* ErrorResponse.swift in Sources */,
 				4FEC46EA2C14DB77005D866D /* ContentView.swift in Sources */,
 				4FEC46E82C14DB77005D866D /* Frontend_ScrabbleApp.swift in Sources */,
+				994F95482C1F106500497BAA /* AppConfig.swift in Sources */,
 				994F953F2C1E3F8400497BAA /* AuthorizationView.swift in Sources */,
 				994F95412C1E419900497BAA /* AuthService.swift in Sources */,
 			);

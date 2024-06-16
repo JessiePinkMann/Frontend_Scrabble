@@ -3,15 +3,14 @@ import Foundation
 
 class AuthService {
     static let shared = AuthService()
-    private let apiKey = "8463ad36-f7fc-41d0-9d22-d7624562bc30"
-    private let baseURL = "http://127.0.0.1:8080/auth"
+    private let baseURL = AppConfig.apiUrl + "auth"
     private let userDefaultsTokenKey = "authToken"
 
     func register(nickname: String, password: String, completion: @escaping (Result<Void, Error>) -> Void) {
         let url = URL(string: "\(baseURL)/register")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        request.addValue(apiKey, forHTTPHeaderField: "ApiKey")
+        request.addValue(AppConfig.apiKey, forHTTPHeaderField: "ApiKey")
         request.httpBody = try? JSONEncoder().encode(["nickName": nickname, "password": password])
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
@@ -49,7 +48,7 @@ class AuthService {
         let url = URL(string: "\(baseURL)/login")!
         var request = URLRequest(url: url)
         request.httpMethod = "POST"
-        request.addValue(apiKey, forHTTPHeaderField: "ApiKey")
+        request.addValue(AppConfig.apiKey, forHTTPHeaderField: "ApiKey")
         request.httpBody = try? JSONEncoder().encode(["nickName": nickname, "password": password])
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
