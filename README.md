@@ -48,7 +48,7 @@ Making da front for scrabble game!!
 * Dependency injection with unit/integration tests (two or more) (1.0 points)
 * Good code style (0.5 points)
 * **Game can be played again with the same players (1.5 points)**
-* **Empty rooms are deleted (0.5 points)**
+* **[YES]** Empty rooms are deleted (0.5 points)
 * Letter tiles left counter is present (0.3 points)
 * Exchange letters in hand with the bag (skips their turn) (0.3 points)
 * **Bonus: Players can get hints for words to place (1.5 points)**
