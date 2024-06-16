@@ -6,6 +6,7 @@ class AuthService {
     private let baseURL = AppConfig.apiUrl + "auth"
     private let userDefaultsTokenKey = "authToken"
     private let userDefaultsNicknameKey = "nickname"
+    private let userDefaultsIdKey = "id"
 
     func register(nickname: String, password: String, completion: @escaping (Result<Void, Error>) -> Void) {
         let url = URL(string: "\(baseURL)/register")!
@@ -61,13 +62,23 @@ class AuthService {
             
             if let httpResponse = response as? HTTPURLResponse {
                 if httpResponse.statusCode == 200 {
-                    guard let data = data, let token = String(data: data, encoding: .utf8) else {
+                    if let data = data {
+                        do {
+                            let loginResponse = try JSONDecoder().decode(LoginResponse.self, from: data)
+                            let token = loginResponse.JWT
+                            let id = loginResponse.id
+                            
+                            self.saveToken("Bearer " + token)
+                            self.saveNickname(nickname)
+                            self.saveId(id)
+                            completion(.success(()))
+                        } catch {
+                            completion(.failure(error))
+                        }
+                    } else {
                         completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "No data received"])))
                         return
                     }
-                    self.saveToken("Bearer " + token)
-                    self.saveNickname(nickname)
-                    completion(.success(()))
                 } else {
                     if let data = data {
                         do {
@@ -107,5 +118,13 @@ class AuthService {
     
     func getNickname() -> String? {
         return UserDefaults.standard.string(forKey: userDefaultsNicknameKey)
+    }
+    
+    private func saveId(_ id: String) {
+        UserDefaults.standard.set(id, forKey: userDefaultsIdKey)
+    }
+    
+    func getId() -> String? {
+        return UserDefaults.standard.string(forKey: userDefaultsIdKey)
     }
 }
