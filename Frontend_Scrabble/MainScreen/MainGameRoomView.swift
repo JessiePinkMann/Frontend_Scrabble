@@ -11,6 +11,7 @@ struct MainGameRoomView: View {
     @StateObject private var viewModel = GameRoomViewModel()
     @State private var showCreateRoomView = false
     var onLogout: () -> Void
+
     
     var body: some View {
         NavigationView {
@@ -50,6 +51,7 @@ struct MainGameRoomView: View {
                         .cornerRadius(10)
                         .padding()
                 }
+
             }
             .padding()
             .navigationBarTitle("Game Rooms", displayMode: .inline)
