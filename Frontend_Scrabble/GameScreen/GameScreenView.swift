@@ -10,6 +10,31 @@ struct GameScreenView: View {
                 .font(.largeTitle)
                 .padding()
             
+            if viewModel.isLoading {
+                ProgressView("Loading players...")
+                    .progressViewStyle(CircularProgressViewStyle())
+                    .padding()
+            } else {
+                List(viewModel.players) { player in
+                    HStack {
+                        Text(player.nickName)
+                        Spacer()
+                        if viewModel.isAdmin {
+                            Button("Make Admin") {
+                                viewModel.makePlayerAdmin(player: player)
+                            }
+                            .buttonStyle(BorderlessButtonStyle())
+                            .padding(.trailing, 10)
+
+                            Button("Kick") {
+                                viewModel.kickPlayer(player: player)
+                            }
+                            .buttonStyle(BorderlessButtonStyle())
+                        }
+                    }
+                }
+            }
+            
             Spacer()
             
             Button(action: {
