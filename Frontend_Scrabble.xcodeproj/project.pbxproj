@@ -7,6 +7,14 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		4FC01E092C1E41F200728F39 /* GameRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC01E082C1E41F200728F39 /* GameRoom.swift */; };
+		4FC01E0B2C1E420D00728F39 /* GameRoomViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC01E0A2C1E420D00728F39 /* GameRoomViewModel.swift */; };
+		4FC01E0D2C1E422100728F39 /* ActiveRoomsNowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC01E0C2C1E422100728F39 /* ActiveRoomsNowView.swift */; };
+		4FC01E0F2C1E422900728F39 /* ActiveRoomsListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC01E0E2C1E422900728F39 /* ActiveRoomsListView.swift */; };
+		4FC01E112C1E423500728F39 /* CreateRoomButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC01E102C1E423500728F39 /* CreateRoomButtonView.swift */; };
+		4FC01E132C1E424700728F39 /* MainGameRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC01E122C1E424700728F39 /* MainGameRoomView.swift */; };
+		4FC01E152C1EFD7B00728F39 /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC01E142C1EFD7B00728F39 /* User.swift */; };
+		4FC01E172C1F11DD00728F39 /* CreateRoomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC01E162C1F11DD00728F39 /* CreateRoomView.swift */; };
 		4FEC46E82C14DB77005D866D /* Frontend_ScrabbleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEC46E72C14DB77005D866D /* Frontend_ScrabbleApp.swift */; };
 		4FEC46EA2C14DB77005D866D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEC46E92C14DB77005D866D /* ContentView.swift */; };
 		4FEC46EC2C14DB79005D866D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FEC46EB2C14DB79005D866D /* Assets.xcassets */; };
@@ -14,6 +22,14 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		4FC01E082C1E41F200728F39 /* GameRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRoom.swift; sourceTree = "<group>"; };
+		4FC01E0A2C1E420D00728F39 /* GameRoomViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameRoomViewModel.swift; sourceTree = "<group>"; };
+		4FC01E0C2C1E422100728F39 /* ActiveRoomsNowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveRoomsNowView.swift; sourceTree = "<group>"; };
+		4FC01E0E2C1E422900728F39 /* ActiveRoomsListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActiveRoomsListView.swift; sourceTree = "<group>"; };
+		4FC01E102C1E423500728F39 /* CreateRoomButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoomButtonView.swift; sourceTree = "<group>"; };
+		4FC01E122C1E424700728F39 /* MainGameRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainGameRoomView.swift; sourceTree = "<group>"; };
+		4FC01E142C1EFD7B00728F39 /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		4FC01E162C1F11DD00728F39 /* CreateRoomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateRoomView.swift; sourceTree = "<group>"; };
 		4FEC46E42C14DB77005D866D /* Frontend_Scrabble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Frontend_Scrabble.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FEC46E72C14DB77005D866D /* Frontend_ScrabbleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frontend_ScrabbleApp.swift; sourceTree = "<group>"; };
 		4FEC46E92C14DB77005D866D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -32,6 +48,45 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		4FC01E042C1E3F1B00728F39 /* MainScreen */ = {
+			isa = PBXGroup;
+			children = (
+				4FC01E072C1E3F5700728F39 /* ViewModels */,
+				4FC01E062C1E3F3F00728F39 /* Views */,
+				4FC01E052C1E3F2F00728F39 /* Models */,
+				4FC01E122C1E424700728F39 /* MainGameRoomView.swift */,
+			);
+			path = MainScreen;
+			sourceTree = "<group>";
+		};
+		4FC01E052C1E3F2F00728F39 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				4FC01E082C1E41F200728F39 /* GameRoom.swift */,
+				4FC01E142C1EFD7B00728F39 /* User.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		4FC01E062C1E3F3F00728F39 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				4FC01E0C2C1E422100728F39 /* ActiveRoomsNowView.swift */,
+				4FC01E162C1F11DD00728F39 /* CreateRoomView.swift */,
+				4FC01E0E2C1E422900728F39 /* ActiveRoomsListView.swift */,
+				4FC01E102C1E423500728F39 /* CreateRoomButtonView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		4FC01E072C1E3F5700728F39 /* ViewModels */ = {
+			isa = PBXGroup;
+			children = (
+				4FC01E0A2C1E420D00728F39 /* GameRoomViewModel.swift */,
+			);
+			path = ViewModels;
+			sourceTree = "<group>";
+		};
 		4FEC46DB2C14DB77005D866D = {
 			isa = PBXGroup;
 			children = (
@@ -51,6 +106,7 @@
 		4FEC46E62C14DB77005D866D /* Frontend_Scrabble */ = {
 			isa = PBXGroup;
 			children = (
+				4FC01E042C1E3F1B00728F39 /* MainScreen */,
 				4FEC46E72C14DB77005D866D /* Frontend_ScrabbleApp.swift */,
 				4FEC46E92C14DB77005D866D /* ContentView.swift */,
 				4FEC46EB2C14DB79005D866D /* Assets.xcassets */,
@@ -137,8 +193,16 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				4FC01E132C1E424700728F39 /* MainGameRoomView.swift in Sources */,
 				4FEC46EA2C14DB77005D866D /* ContentView.swift in Sources */,
+				4FC01E112C1E423500728F39 /* CreateRoomButtonView.swift in Sources */,
+				4FC01E0F2C1E422900728F39 /* ActiveRoomsListView.swift in Sources */,
+				4FC01E0B2C1E420D00728F39 /* GameRoomViewModel.swift in Sources */,
+				4FC01E092C1E41F200728F39 /* GameRoom.swift in Sources */,
 				4FEC46E82C14DB77005D866D /* Frontend_ScrabbleApp.swift in Sources */,
+				4FC01E152C1EFD7B00728F39 /* User.swift in Sources */,
+				4FC01E0D2C1E422100728F39 /* ActiveRoomsNowView.swift in Sources */,
+				4FC01E172C1F11DD00728F39 /* CreateRoomView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
