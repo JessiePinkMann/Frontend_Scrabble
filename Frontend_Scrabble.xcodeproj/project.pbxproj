@@ -19,6 +19,10 @@
 		4FEC46EA2C14DB77005D866D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEC46E92C14DB77005D866D /* ContentView.swift */; };
 		4FEC46EC2C14DB79005D866D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FEC46EB2C14DB79005D866D /* Assets.xcassets */; };
 		4FEC46EF2C14DB79005D866D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FEC46EE2C14DB79005D866D /* Preview Assets.xcassets */; };
+		994F953F2C1E3F8400497BAA /* AuthorizationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994F953E2C1E3F8400497BAA /* AuthorizationView.swift */; };
+		994F95412C1E419900497BAA /* AuthService.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994F95402C1E419900497BAA /* AuthService.swift */; };
+		994F95442C1EFFFE00497BAA /* ErrorResponse.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994F95432C1EFFFE00497BAA /* ErrorResponse.swift */; };
+		994F95482C1F106500497BAA /* AppConfig.swift in Sources */ = {isa = PBXBuildFile; fileRef = 994F95472C1F106500497BAA /* AppConfig.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -35,6 +39,10 @@
 		4FEC46E92C14DB77005D866D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		4FEC46EB2C14DB79005D866D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		4FEC46EE2C14DB79005D866D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		994F953E2C1E3F8400497BAA /* AuthorizationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthorizationView.swift; sourceTree = "<group>"; };
+		994F95402C1E419900497BAA /* AuthService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthService.swift; sourceTree = "<group>"; };
+		994F95432C1EFFFE00497BAA /* ErrorResponse.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ErrorResponse.swift; sourceTree = "<group>"; };
+		994F95472C1F106500497BAA /* AppConfig.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppConfig.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,10 +115,13 @@
 			isa = PBXGroup;
 			children = (
 				4FC01E042C1E3F1B00728F39 /* MainScreen */,
+				994F95422C1EFFF200497BAA /* Responses */,
+				994F953D2C1E3F4600497BAA /* AuthorizationView */,
 				4FEC46E72C14DB77005D866D /* Frontend_ScrabbleApp.swift */,
 				4FEC46E92C14DB77005D866D /* ContentView.swift */,
 				4FEC46EB2C14DB79005D866D /* Assets.xcassets */,
 				4FEC46ED2C14DB79005D866D /* Preview Content */,
+				994F95472C1F106500497BAA /* AppConfig.swift */,
 			);
 			path = Frontend_Scrabble;
 			sourceTree = "<group>";
@@ -121,6 +132,23 @@
 				4FEC46EE2C14DB79005D866D /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		994F953D2C1E3F4600497BAA /* AuthorizationView */ = {
+			isa = PBXGroup;
+			children = (
+				994F953E2C1E3F8400497BAA /* AuthorizationView.swift */,
+				994F95402C1E419900497BAA /* AuthService.swift */,
+			);
+			path = AuthorizationView;
+			sourceTree = "<group>";
+		};
+		994F95422C1EFFF200497BAA /* Responses */ = {
+			isa = PBXGroup;
+			children = (
+				994F95432C1EFFFE00497BAA /* ErrorResponse.swift */,
+			);
+			path = Responses;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -194,6 +222,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				4FC01E132C1E424700728F39 /* MainGameRoomView.swift in Sources */,
+				994F95442C1EFFFE00497BAA /* ErrorResponse.swift in Sources */,
 				4FEC46EA2C14DB77005D866D /* ContentView.swift in Sources */,
 				4FC01E112C1E423500728F39 /* CreateRoomButtonView.swift in Sources */,
 				4FC01E0F2C1E422900728F39 /* ActiveRoomsListView.swift in Sources */,
@@ -203,6 +232,9 @@
 				4FC01E152C1EFD7B00728F39 /* User.swift in Sources */,
 				4FC01E0D2C1E422100728F39 /* ActiveRoomsNowView.swift in Sources */,
 				4FC01E172C1F11DD00728F39 /* CreateRoomView.swift in Sources */,
+				994F95482C1F106500497BAA /* AppConfig.swift in Sources */,
+				994F953F2C1E3F8400497BAA /* AuthorizationView.swift in Sources */,
+				994F95412C1E419900497BAA /* AuthService.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
