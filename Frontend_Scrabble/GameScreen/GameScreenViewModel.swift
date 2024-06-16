@@ -2,11 +2,9 @@ import SwiftUI
 import Combine
 
 class GameScreenViewModel: ObservableObject {
-//    @Published var players: [User] = []
-//    @Published var isLoading = true
-    @Published var players: [User] = [User(id: UUID(), nickName: "RANDOM PLAYA", password: "")]
-    @Published var isLoading = false
-    
+    @Published var players: [User] = []
+    @Published var isLoading = true
+
     private let baseURL = AppConfig.apiUrl
     private let apiKey = AppConfig.apiKey
     private var jwtToken: String
@@ -50,6 +48,7 @@ class GameScreenViewModel: ObservableObject {
             }, receiveValue: { [weak self] players in
                 self?.players = players
                 self?.isLoading = false
+                print(self?.players)
             })
             .store(in: &cancellables)
         
