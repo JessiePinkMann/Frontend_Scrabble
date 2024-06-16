@@ -11,7 +11,7 @@ import SwiftUI
 struct Frontend_ScrabbleApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            AuthorizationView()
         }
     }
 }
