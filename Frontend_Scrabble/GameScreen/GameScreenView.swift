@@ -1,57 +1,44 @@
-//
-//  GameScreenView.swift
-//  Frontend_Scrabble
-//
-//  Created by Egor Anoshin on 16.06.2024.
-//
-
 import SwiftUI
 
 struct GameScreenView: View {
-    @ObservedObject var viewModel: GameRoomViewModel
-    @Environment(\.presentationMode) var presentationMode
+    @ObservedObject var viewModel: GameScreenViewModel
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         VStack {
-            HStack {
-                Button(action: {
-                    leaveRoom()
-                }) {
-                    Text("Leave Room")
-                        .foregroundColor(.red)
-                        .padding()
-                }
-                Spacer()
-                Button(action: {
-                    deleteRoom()
-                }) {
-                    Text("Delete Room")
-                        .foregroundColor(.red)
-                        .padding()
-                }
-            }
+            Text("Welcome to the Game Room")
+                .font(.largeTitle)
+                .padding()
+            
             Spacer()
-            // Ваши игровые элементы здесь
+            
+            Button(action: {
+                leaveRoom()
+            }) {
+                Text("Back")
+                    .font(.headline)
+                    .foregroundColor(.white)
+                    .padding()
+                    .background(Color.red)
+                    .cornerRadius(10)
+                    .padding()
+            }
         }
-        .padding()
-        .navigationBarTitle("Game Room", displayMode: .inline)
+        .navigationTitle("Game Room")
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: Button(action: {
+            leaveRoom()
+        }) {
+            Image(systemName: "arrow.left")
+                .foregroundColor(.blue)
+        })
     }
     
     private func leaveRoom() {
         viewModel.leaveRoom {
-            presentationMode.wrappedValue.dismiss()
+            DispatchQueue.main.async {
+                dismiss()
+            }
         }
-    }
-    
-    private func deleteRoom() {
-        viewModel.deleteRoom {
-            presentationMode.wrappedValue.dismiss()
-        }
-    }
-}
-
-struct GameScreenView_Previews: PreviewProvider {
-    static var previews: some View {
-        GameScreenView(viewModel: GameRoomViewModel())
     }
 }

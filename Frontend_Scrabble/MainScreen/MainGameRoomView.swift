@@ -1,31 +1,34 @@
-//
-//  MainGameRoomView.swift
-//  Frontend_Scrabble
-//
-//  Created by Egor Anoshin on 16.06.2024.
-//
-
 import SwiftUI
 
 struct MainGameRoomView: View {
     @StateObject private var viewModel = GameRoomViewModel()
-    @State private var showCreateRoomView = false
     var onLogout: () -> Void
-
     
     var body: some View {
-        NavigationView {
+        NavigationStack {
             VStack {
                 ActiveRoomsNowView(viewModel: viewModel)
                 
-                ActiveRoomsListView(gameRooms: viewModel.gameRooms)
-                    .frame(maxWidth: .infinity)
+                ScrollView {
+                    VStack(spacing: 10) {
+                        ForEach(viewModel.gameRooms) { room in
+                            NavigationLink(destination: GameScreenView(viewModel: GameScreenViewModel(roomId: room.id!))) {
+                                RoomRowView(room: room)
+                                    .onTapGesture {
+                                        viewModel.addGamerToRoom(roomId: room.id, roomCode: room.roomCode ?? "") {
+                                            viewModel.navigateToGameScreen = true
+                                        }
+                                    }
+                            }
+                            .buttonStyle(PlainButtonStyle())
+                        }
+                    }
+                    .padding()
+                }
                 
                 Spacer()
                 
-                Button(action: {
-                    showCreateRoomView.toggle()
-                }) {
+                NavigationLink(destination: CreateRoomView(viewModel: viewModel)) {
                     Text("Create Game Room")
                         .font(.headline)
                         .foregroundColor(.white)
@@ -34,9 +37,6 @@ struct MainGameRoomView: View {
                         .background(Color.black)
                         .cornerRadius(10)
                         .padding()
-                }
-                .sheet(isPresented: $showCreateRoomView) {
-                    CreateRoomView(viewModel: viewModel)
                 }
                 
                 Button(action: {
@@ -53,11 +53,21 @@ struct MainGameRoomView: View {
                 }
             }
             .padding()
-            .navigationBarTitle("Game Rooms", displayMode: .inline)
+            .navigationTitle("Game Rooms")
+            .navigationDestination(isPresented: $viewModel.navigateToGameScreen) {
+                if let roomId = viewModel.newRoomId {
+                    GameScreenView(viewModel: GameScreenViewModel(roomId: roomId))
+                }
+            }
+        }
+        .onAppear {
+            viewModel.fetchGameRooms()
         }
     }
 }
 
-#Preview {
-    MainGameRoomView(onLogout: {})
+struct MainGameRoomView_Previews: PreviewProvider {
+    static var previews: some View {
+        MainGameRoomView(onLogout: {})
+    }
 }
