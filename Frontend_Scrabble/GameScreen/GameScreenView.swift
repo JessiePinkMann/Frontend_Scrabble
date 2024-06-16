@@ -12,6 +12,20 @@ struct GameScreenView: View {
             
             Spacer()
             
+            if viewModel.isAdmin {
+                Button(action: {
+                    viewModel.deleteRoom {
+                        DispatchQueue.main.async {
+                            dismiss()
+                        }
+                    }
+                }) {
+                    Image(systemName: "trash")
+                        .foregroundColor(.red)
+                        .padding()
+                }
+            }
+            
             Button(action: {
                 leaveRoom()
             }) {
