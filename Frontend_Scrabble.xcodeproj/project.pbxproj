@@ -21,6 +21,7 @@
 		4FC01E252C1F5E6D00728F39 /* GameScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC01E242C1F5E6D00728F39 /* GameScreenView.swift */; };
 		4FC01E272C1F6E5E00728F39 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC01E262C1F6E5E00728F39 /* MainView.swift */; };
 		4FC01E2B2C1F825200728F39 /* RoomRowView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC01E2A2C1F825200728F39 /* RoomRowView.swift */; };
+		4FC01E2D2C1F881000728F39 /* CodeInputView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FC01E2C2C1F881000728F39 /* CodeInputView.swift */; };
 		4FEC46E82C14DB77005D866D /* Frontend_ScrabbleApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEC46E72C14DB77005D866D /* Frontend_ScrabbleApp.swift */; };
 		4FEC46EA2C14DB77005D866D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 4FEC46E92C14DB77005D866D /* ContentView.swift */; };
 		4FEC46EC2C14DB79005D866D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 4FEC46EB2C14DB79005D866D /* Assets.xcassets */; };
@@ -50,6 +51,7 @@
 		4FC01E242C1F5E6D00728F39 /* GameScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameScreenView.swift; sourceTree = "<group>"; };
 		4FC01E262C1F6E5E00728F39 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		4FC01E2A2C1F825200728F39 /* RoomRowView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoomRowView.swift; sourceTree = "<group>"; };
+		4FC01E2C2C1F881000728F39 /* CodeInputView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CodeInputView.swift; sourceTree = "<group>"; };
 		4FEC46E42C14DB77005D866D /* Frontend_Scrabble.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Frontend_Scrabble.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		4FEC46E72C14DB77005D866D /* Frontend_ScrabbleApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Frontend_ScrabbleApp.swift; sourceTree = "<group>"; };
 		4FEC46E92C14DB77005D866D /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -104,6 +106,7 @@
 				4FC01E0E2C1E422900728F39 /* ActiveRoomsListView.swift */,
 				4FC01E102C1E423500728F39 /* CreateRoomButtonView.swift */,
 				4FC01E2A2C1F825200728F39 /* RoomRowView.swift */,
+				4FC01E2C2C1F881000728F39 /* CodeInputView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -281,6 +284,7 @@
 				994F95442C1EFFFE00497BAA /* ErrorResponse.swift in Sources */,
 				4FC01E2B2C1F825200728F39 /* RoomRowView.swift in Sources */,
 				4FEC46EA2C14DB77005D866D /* ContentView.swift in Sources */,
+				4FC01E2D2C1F881000728F39 /* CodeInputView.swift in Sources */,
 				4FC01E112C1E423500728F39 /* CreateRoomButtonView.swift in Sources */,
 				4FC01E0F2C1E422900728F39 /* ActiveRoomsListView.swift in Sources */,
 				4FC01E0B2C1E420D00728F39 /* GameRoomViewModel.swift in Sources */,
