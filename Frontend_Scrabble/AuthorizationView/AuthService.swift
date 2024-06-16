@@ -1,8 +1,5 @@
 import Foundation
 
-struct AuthResponse: Codable {
-    let token: String
-}
 
 class AuthService {
     static let shared = AuthService()
@@ -18,14 +15,33 @@ class AuthService {
         request.httpBody = try? JSONEncoder().encode(["nickName": nickname, "password": password])
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        print("register: ", request.httpBody)
-        
         URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {
                 completion(.failure(error))
                 return
             }
-            completion(.success(()))
+            
+            if let httpResponse = response as? HTTPURLResponse {
+                if httpResponse.statusCode == 200 {
+                    completion(.success(()))
+                } else {
+                    if let data = data {
+                        do {
+                            let errorResponse = try JSONDecoder().decode(ErrorResponse.self, from: data)
+                            let errorMessage = errorResponse.reason
+                            completion(.failure(NSError(domain: "", code: httpResponse.statusCode, userInfo: [NSLocalizedDescriptionKey: errorMessage])))
+                        } catch {
+                            completion(.failure(error))
+                        }
+                    } else {
+                        let errorMessage = HTTPURLResponse.localizedString(forStatusCode: httpResponse.statusCode)
+                        completion(.failure(NSError(domain: "", code: httpResponse.statusCode, userInfo: [NSLocalizedDescriptionKey: errorMessage])))
+                    }
+                }
+            } else {
+                let errorMessage = "Unexpected response from server"
+                completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: errorMessage])))
+            }
         }.resume()
     }
 
@@ -37,23 +53,37 @@ class AuthService {
         request.httpBody = try? JSONEncoder().encode(["nickName": nickname, "password": password])
         request.setValue("application/json", forHTTPHeaderField: "Content-Type")
         
-        print("login: ", request.httpBody)
-        
         URLSession.shared.dataTask(with: request) { data, response, error in
             if let error = error {
                 completion(.failure(error))
                 return
             }
-            guard let data = data else {
-                completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "No data received"])))
-                return
-            }
-            do {
-                let authResponse = try JSONDecoder().decode(AuthResponse.self, from: data)
-                self.saveToken(authResponse.token)
-                completion(.success(()))
-            } catch {
-                completion(.failure(error))
+            
+            if let httpResponse = response as? HTTPURLResponse {
+                if httpResponse.statusCode == 200 {
+                    guard let data = data, let token = String(data: data, encoding: .utf8) else {
+                        completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: "No data received"])))
+                        return
+                    }
+                    self.saveToken(token)
+                    completion(.success(()))
+                } else {
+                    if let data = data {
+                        do {
+                            let errorResponse = try JSONDecoder().decode(ErrorResponse.self, from: data)
+                            let errorMessage = errorResponse.reason
+                            completion(.failure(NSError(domain: "", code: httpResponse.statusCode, userInfo: [NSLocalizedDescriptionKey: errorMessage])))
+                        } catch {
+                            completion(.failure(error))
+                        }
+                    } else {
+                        let errorMessage = HTTPURLResponse.localizedString(forStatusCode: httpResponse.statusCode)
+                        completion(.failure(NSError(domain: "", code: httpResponse.statusCode, userInfo: [NSLocalizedDescriptionKey: errorMessage])))
+                    }
+                }
+            } else {
+                let errorMessage = "Unexpected response from server"
+                completion(.failure(NSError(domain: "", code: -1, userInfo: [NSLocalizedDescriptionKey: errorMessage])))
             }
         }.resume()
     }
