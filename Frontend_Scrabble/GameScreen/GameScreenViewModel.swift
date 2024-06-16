@@ -12,7 +12,6 @@ class GameScreenViewModel: ObservableObject {
     private var jwtToken: String
     private var gamerId: String
     private var roomId: UUID
-    @Published var isAdmin: Bool = false
 
     private var cancellables = Set<AnyCancellable>()
     private var timer: AnyCancellable?
