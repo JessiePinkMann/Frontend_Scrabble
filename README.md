@@ -19,10 +19,10 @@ Making da front for scrabble game!!
 
 ### Authorization (1 point)
 
-* App allows you to register an account (0.4 points)
+* **DONE** App allows you to register an account (0.4 points)
 * *App allows you to delete account (0.1 points) (TODO: add to API)*
-* App allows you to authorize with an existing account (0.4 points)
-* *App allows you to log out of the account (0.1 points) (TODO: add to API)*
+* **DONE** App allows you to authorize with an existing account (0.4 points)
+* **DONE** App allows you to log out of the account (0.1 points)
 
 ### Rooms (3.3 points)
 * App allows to create a gaming room, which grants admin rights for this room to the creator (0.3 points)
@@ -78,6 +78,7 @@ func deleteRoom(_ req: Request) async throws -> HTTPStatus {
 }
 ```
 
+2. Нельзя получить всех игроков либо же получить ID по нику. Например, для того чтобы добавить игрока в комнату нужен его ID, который никак кроме как на регистрации получить. В целом можно как-то и обойти, но для других целей могло бы понадобиться...
 
 ## Crew
 - Mr. 3ybactuk <3
