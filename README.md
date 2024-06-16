@@ -55,6 +55,30 @@ Making da front for scrabble game!!
 * Bonus: Any improvement you do to server to make tasks for this group work possible grant you 0.5 points up to 2 points
 
 
+## Фиксы в реализации сервера
+
+1. Комнату можно удалить только если в ней есть игроки, иначе выдает ошибку "Комнаты не существует" (вводит в заблуждение)
+```swift
+func deleteRoom(_ req: Request) async throws -> HTTPStatus {
+    if let roomIdString = req.parameters.get("roomId"), let roomId = UUID(roomIdString) {
+        let rooms = try await GamerIntoRoom.query(on: req.db)
+            .filter(\.$roomId == roomId).all()
+        if !rooms.isEmpty {
+            let room = try await GameRoom.query(on: req.db)
+                .filter(\.$id == roomId).first()
+            try await rooms.delete(on: req.db)
+            try await room?.delete(on: req.db)
+        } else {
+            throw Abort(.custom(code: 404, reasonPhrase: "Данной комнаты не существует"))
+        }
+        return .noContent
+    } else {
+        throw Abort(.notFound)
+    }
+}
+```
+
+
 ## Crew
 - Mr. 3ybactuk <3
 - Sir Jessie

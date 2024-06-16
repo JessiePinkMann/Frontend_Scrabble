@@ -9,7 +9,8 @@ struct AuthorizationView: View {
     var body: some View {
         VStack {
             if isLoggedIn {
-                Button("Logout", action: logout)
+//                Button("Logout", action: logout)
+                MainGameRoomView(onLogout: logout)
             } else {
                 Spacer()
                 
