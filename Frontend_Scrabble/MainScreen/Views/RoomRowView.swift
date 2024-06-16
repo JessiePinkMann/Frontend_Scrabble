@@ -24,10 +24,4 @@ struct RoomRowView: View {
     }
 }
 
-struct RoomRowView_Previews: PreviewProvider {
-    static var previews: some View {
-        RoomRowView(room: GameRoom(id: UUID(), adminNickname: "Admin", roomCode: "1234", gameStatus: "Not Started", currentNumberOfChips: 10))
-            .previewLayout(.sizeThatFits)
-            .padding()
-    }
-}
+
