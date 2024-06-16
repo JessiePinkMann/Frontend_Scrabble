@@ -74,6 +74,7 @@ struct MainGameRoomView: View {
                         onSuccess: {
                             viewModel.addGamerToRoom(roomId: room.id, roomCode: enteredCode) {
                                 viewModel.navigateToGameScreen = true
+                                viewModel.newRoomId = room.id 
                             }
                             showCodeInputView = false
                         },
