@@ -1,10 +1,3 @@
-//
-//  CodeInputView.swift
-//  Frontend_Scrabble
-//
-//  Created by Egor Anoshin on 16.06.2024.
-//
-
 import SwiftUI
 
 struct CodeInputView: View {
@@ -23,7 +16,7 @@ struct CodeInputView: View {
                     .padding()
             }
             
-            Text("Enter Code for \(room.roomCode ?? "Room")")
+            Text("Enter Code for the Room")
                 .font(.title)
                 .padding()
             

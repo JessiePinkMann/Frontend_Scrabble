@@ -12,6 +12,7 @@ class GameScreenViewModel: ObservableObject {
     private var jwtToken: String
     private var gamerId: String
     private var roomId: UUID
+    @Published var isAdmin: Bool = false
 
     private var cancellables = Set<AnyCancellable>()
     private var timer: AnyCancellable?
@@ -100,7 +101,8 @@ class GameScreenViewModel: ObservableObject {
     }
     
     func leaveRoom(completion: @escaping () -> Void) {
-        guard let url = URL(string: "\(baseURL)/\(roomId)/leaveRoom") else { return }
+        guard let gamerUUID = UUID(uuidString: gamerId) else { return }
+        guard let url = URL(string: "\(AppConfig.apiUrl)gamersIntoRoom/deleteGamer/\(gamerUUID)/withRoom/\(roomId)") else { return }
         
         var request = URLRequest(url: url)
         request.httpMethod = "DELETE"
@@ -120,6 +122,27 @@ class GameScreenViewModel: ObservableObject {
             .store(in: &cancellables)
     }
     
+    func deleteRoom(completion: @escaping () -> Void) {
+        guard let url = URL(string: "\(AppConfig.apiUrl)gamersIntoRoom/deleteRoomWithId/\(roomId)") else { return }
+        
+        var request = URLRequest(url: url)
+        request.httpMethod = "DELETE"
+        request.setValue(apiKey, forHTTPHeaderField: "ApiKey")
+        request.setValue(jwtToken, forHTTPHeaderField: "Authorization")
+        
+        URLSession.shared.dataTaskPublisher(for: request)
+            .map { $0.data }
+            .receive(on: DispatchQueue.main)
+            .sink(receiveCompletion: { completion in
+                if case let .failure(error) = completion {
+                    print("Error deleting room: \(error)")
+                }
+            }, receiveValue: { _ in
+                completion()
+            })
+            .store(in: &cancellables)
+    }
+        
     private func startPolling() {
         timer = Timer.publish(every: 5, on: .main, in: .common).autoconnect().sink { [weak self] _ in
             self?.fetchPlayers()
@@ -160,7 +183,6 @@ class GameScreenViewModel: ObservableObject {
     }
 
     func kickPlayer(player: User) {
-        // http://127.0.0.1:8080/gamersIntoRoom/deleteGamer/1DE2B71B-2990-437D-9072-102173F30120/withRoom/73251908-A91B-49D7-931E-A032DC6F32E9
         guard let url = URL(string: "\(baseURL)gamersIntoRoom/deleteGamer/\(player.id)/withRoom/\(roomId)") else {
             print("Invalid URL for kicking player")
             return
@@ -170,7 +192,6 @@ class GameScreenViewModel: ObservableObject {
         request.httpMethod = "DELETE"
         request.setValue(apiKey, forHTTPHeaderField: "ApiKey")
         request.setValue("\(jwtToken)", forHTTPHeaderField: "Authorization")
-
         URLSession.shared.dataTaskPublisher(for: request)
             .map { $0.data }
             .receive(on: DispatchQueue.main)

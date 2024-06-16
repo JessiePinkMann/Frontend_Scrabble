@@ -6,7 +6,7 @@ struct RoomRowView: View {
     var body: some View {
         HStack {
             VStack(alignment: .leading) {
-                Text(room.roomCode ?? "Unknown Room")
+                Text("\(room.adminNickname)'s Room")
                     .font(.headline)
                 Text("Admin: \(room.adminNickname)")
                     .font(.subheadline)
@@ -23,5 +23,3 @@ struct RoomRowView: View {
         .cornerRadius(10)
     }
 }
-
-
