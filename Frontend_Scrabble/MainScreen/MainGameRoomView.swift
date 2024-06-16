@@ -9,8 +9,22 @@ struct MainGameRoomView: View {
             VStack {
                 ActiveRoomsNowView(viewModel: viewModel)
                 
-                ActiveRoomsListView(gameRooms: viewModel.gameRooms)
-                    .frame(maxWidth: .infinity)
+                ScrollView {
+                    VStack(spacing: 10) {
+                        ForEach(viewModel.gameRooms) { room in
+                            NavigationLink(destination: GameScreenView(viewModel: GameScreenViewModel(roomId: room.id!))) {
+                                RoomRowView(room: room)
+                                    .onTapGesture {
+                                        viewModel.addGamerToRoom(roomId: room.id, roomCode: room.roomCode ?? "") {
+                                            viewModel.navigateToGameScreen = true
+                                        }
+                                    }
+                            }
+                            .buttonStyle(PlainButtonStyle())
+                        }
+                    }
+                    .padding()
+                }
                 
                 Spacer()
                 
