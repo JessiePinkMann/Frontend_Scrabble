@@ -15,6 +15,8 @@ struct GameScreenView: View {
                     .progressViewStyle(CircularProgressViewStyle())
                     .padding()
             } else {
+                Text("Chips: \(viewModel.room?.currentNumberOfChips)")
+                
                 List(viewModel.players) { player in
                     HStack {
                         Text(player.nickName)
