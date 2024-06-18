@@ -17,14 +17,14 @@ Making da front for scrabble game!!
 
 ## Экраны [WIP]
 
-### Authorization (1 point)
+### Authorization (1 point) [0.9]
 
 * **[DONE]** App allows you to register an account (0.4 points)
 * *App allows you to delete account (0.1 points) (TODO: add to API)*
 * **[DONE]** App allows you to authorize with an existing account (0.4 points)
 * **[DONE]** App allows you to log out of the account (0.1 points)
 
-### Rooms (3.3 points)
+### Rooms (3.3 points) [3.3]
 * **[DONE]** App allows to create a gaming room, which grants admin rights for this room to the creator (0.3 points)
 * **[DONE]** App allows admin to delete room (0.3 points)
 * **[DONE]** Other players can join the gaming room (0.3 points)
@@ -33,7 +33,7 @@ Making da front for scrabble game!!
 * **[DONE]** Players can be removed by the room admin (0.4 points)
 * **[Button and handler made - no API option for this]** Admin status can be transferred to another player (0.3 points)
 
-### Game (4.4 points)
+### Game (4.4 points) [0.5]
 
 * Admin can start a game (from room) (0.2 points)
 * Admin can pause and then continue the game (0.2 points)
@@ -42,11 +42,11 @@ Making da front for scrabble game!!
 * **There is scoreboard that is shown to every player that indicates who is closer to victory (1.5 points)**
 * **After game finishes the winner is shown to everyone (1.0 points)**
 
-### Other
+### Other [1.2 + 0.5 + 0.5 + 2 = 4.2]
 
-* **[Probably yes]** The code is written in MVVM or Clean Swift or TCA 1.2 points
+* **[YES]** The code is written in MVVM or Clean Swift or TCA 1.2 points
 * Dependency injection with unit/integration tests (two or more) (1.0 points)
-* Good code style (0.5 points)
+* **[PERHAPS]** Good code style (0.5 points)
 * **Game can be played again with the same players (1.5 points)**
 * **[YES]** Empty rooms are deleted (0.5 points)
 * Letter tiles left counter is present (0.3 points)
